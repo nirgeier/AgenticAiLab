@@ -1,0 +1,5 @@
+# Docker support for local MkDocs preview
+
+# Run: docker compose up --build
+
+# Then open: http://localhost:8000

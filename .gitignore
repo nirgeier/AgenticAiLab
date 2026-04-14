@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.env
+
+# Build outputs
+mkdocs-site/**
+.mkdocs-build/**
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+
+# ARM toolchain
+*.su        # Stack usage files
+*.d         # Dependency files
+
+# MkDocs generated assets
+Labs/assets/
+
+# MkDocs generated site
+site/
+
+# macOS
+.DS_Store
+.history
+
+# VS Code
+.vscode/settings.json
+
+# Vercel
+.vercel
