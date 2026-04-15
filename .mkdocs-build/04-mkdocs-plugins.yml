@@ -1,0 +1,29 @@
+###
+### mkdocs-plugins.yml
+###
+
+plugins:
+  - awesome-pages
+  - meta
+  # Git
+  #- git-authors
+  - git-committers:
+      branch: main
+      docs_path: Labs # set if your docs folder is not root
+      enabled: true
+      repository: nirgeier/AgenticAI-FW-Course
+  - git-revision-date-localized:
+      enable_creation_date: true
+      enable_git_follow: false
+      fallback_to_build_date: true
+      locale: en
+      timezone: UTC
+      type: date
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+
+  # Leave this one as the last one in the list
+  - print-site
+  - include-markdown

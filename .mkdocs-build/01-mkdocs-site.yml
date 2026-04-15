@@ -1,0 +1,12 @@
+###
+### mkdocs-site.yml
+###
+docs_dir: Labs
+edit_uri:
+repo_name: nirgeier/AgenticAI-FW-Course
+repo_url: https://github.com/nirgeier/AgenticAI-FW-Course
+site_author: Nir Geier - nirgeier@gmail.com
+site_description: A collection of AgenticAI-FW-Course Labs
+site_dir: ./mkdocs-site
+site_name: AgenticAI-FW-Course
+site_url: https://nirgeier.github.io/AgenticAI-FW-Course/
