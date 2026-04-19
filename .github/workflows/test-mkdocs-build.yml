@@ -1,0 +1,68 @@
+name: Test MkDocs Build
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache Python packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install dependencies
+        run: |
+          if [ -f mkdocs/requirements.txt ]; then
+            uv pip install -r mkdocs/requirements.txt
+          else
+            uv pip install mkdocs==1.5.3 mkdocs-material==9.4.14 mkdocs-awesome-pages-plugin==2.9.2 mkdocs-git-committers-plugin-2==0.3.6 mkdocs-git-revision-date-localized-plugin==1.12.5
+          fi
+
+      - name: Build MkDocs
+        run: mkdocs build -f mkdocs.yml -d mkdocs-site
+
+      - name: Verify build output
+        run: |
+          if [ -d mkdocs-site ] && [ -f mkdocs-site/index.html ]; then
+            echo "✅ MkDocs build successful"
+            echo "📁 Build directory: mkdocs-site"
+            echo "📄 Files generated: $(find mkdocs-site -type f | wc -l)"
+          else
+            echo "❌ MkDocs build failed - no output found"
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mkdocs-site
+          path: mkdocs-site/
+          retention-days: 5
+
+      - name: Build Summary
+        run: |
+          echo "🎉 Build test completed successfully"
+          echo "   - Python: ${{ matrix.python-version }}"
+          echo "   - MkDocs: $(mkdocs --version)"
