@@ -27,7 +27,7 @@ int main(void)
 
     // Peripheral initialization
     MX_USART2_UART_Init();             // Always-on UART at 115200
-    MX_SPI1_Init();                    // SPI to flash — always on
+    MX_SPI1_Init();                    // SPI to flash - always on
     MX_ADC1_Init();                    // ADC to temperature sensor
 
     while (1)
@@ -51,21 +51,21 @@ int main(void)
 
 #### Scenario:
 
-◦ Battery lifetime is 3 weeks instead of 2 years — a 35× gap.
+◦ Battery lifetime is 3 weeks instead of 2 years - a 35× gap.
 ◦ The power audit identifies which patterns are responsible, prioritized by impact.
 
-**Hint:** On STM32L4: Run 80 MHz ≈ 15–20 mA; Stop2 mode ≈ 2 µA. Reducing active time from 100% to 1% with Stop2 is the single largest win.
+**Hint:** On STM32L4: Run 80 MHz ≈ 15-20 mA; Stop2 mode ≈ 2 µA. Reducing active time from 100% to 1% with Stop2 is the single largest win.
 
 <details markdown>
 <summary>Solution</summary>
 
 | #   | Pattern                                         | Location          | Classification | Estimated Impact                                                                                                             |
 | --- | ----------------------------------------------- | ----------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| 1   | **CPU at 80 MHz in full Run mode continuously** | Line 5 + while(1) | **Critical**   | 15–20 mA constant. With Stop2 at 2 µA and 1% duty cycle, average drops to ~202 µA.                                           |
+| 1   | **CPU at 80 MHz in full Run mode continuously** | Line 5 + while(1) | **Critical**   | 15-20 mA constant. With Stop2 at 2 µA and 1% duty cycle, average drops to ~202 µA.                                           |
 | 2   | **HAL_Delay(100) busy-wait**                    | Line 25           | **Critical**   | CPU active 100% of the time; this is the reason Run mode never exits. Replace with Stop2 + RTC wakeup.                       |
 | 3   | **ADC polling loop (blocking)**                 | Line 15           | **Major**      | ADC takes up to 20 µs; acceptable if burst-mode, not polling full-time. Use ADC single conversion triggered by wakeup event. |
-| 4   | **BLE TX at maximum power on every change**     | Line 17           | **Major**      | TX current peak can be 10–20 mA for 1–5 ms. Batch notifications and reduce TX power.                                         |
-| 5   | **SPI flash write every 1 second**              | Line 22           | **Major**      | Flash write: 5–10 mW for 10–100 ms. Reduce to once per 10 minutes or on threshold events.                                    |
+| 4   | **BLE TX at maximum power on every change**     | Line 17           | **Major**      | TX current peak can be 10-20 mA for 1-5 ms. Batch notifications and reduce TX power.                                         |
+| 5   | **SPI flash write every 1 second**              | Line 22           | **Major**      | Flash write: 5-10 mW for 10-100 ms. Reduce to once per 10 minutes or on threshold events.                                    |
 | 6   | **Always-on UART at 115200**                    | Line 7            | **Minor**      | UART peripheral clock always enabled. Disable between transactions (HAL_UART_DeInit / re-init).                              |
 | 7   | **SPI peripheral always powered**               | Line 8            | **Minor**      | SPI clock always running. Disable SPI clock via RCC when flash is idle.                                                      |
 
@@ -143,7 +143,7 @@ Refactor the main loop from Task 01 to use STM32L4 **Stop 2 mode** with an **RTC
 
 Requirements:
 
-1. Configure RTC wakeup for every 1 second (replaces the 100 ms HAL_Delay loop — we reduce sampling to 1 Hz)
+1. Configure RTC wakeup for every 1 second (replaces the 100 ms HAL_Delay loop - we reduce sampling to 1 Hz)
 2. Enter Stop2 mode with `HAL_PWREx_EnterSTOP2Mode(PWR_STOPENTRY_WFI)`
 3. On wakeup: re-initialize system clock, take ADC reading, send BLE if changed
 4. Disable SPI and UART clocks while in Stop2; re-enable on wakeup
@@ -268,28 +268,28 @@ You are a firmware power consumption auditor.
 
 Analyze the provided C source code and check for these power management violations:
 
-RULE 1 — NO HAL_Delay IN RUN MODE:
+RULE 1 - NO HAL_Delay IN RUN MODE:
   Find all calls to HAL_Delay(). Each one indicates CPU busy-waiting in Run mode.
   Flag every occurrence with line number and duration.
 
-RULE 2 — PERIPHERAL CLOCK DISABLE BEFORE STOP2:
+RULE 2 - PERIPHERAL CLOCK DISABLE BEFORE STOP2:
   Find all calls to HAL_PWREx_EnterSTOP2Mode().
   For each call, check that the preceding code (within 20 lines) contains
   __HAL_RCC_*_CLK_DISABLE() for USART, SPI, and ADC peripherals.
   Flag any missing clock-disable calls.
 
-RULE 3 — CLOCK RESTORE AFTER STOP2:
+RULE 3 - CLOCK RESTORE AFTER STOP2:
   Find all calls to HAL_PWREx_EnterSTOP2Mode().
   For each call, check that SystemClock_Config() or SystemClock_Config_XXMHz()
   is called in the code following the Stop2 call (within 20 lines after the next
   executable statement).
   Flag any missing clock-restore calls.
 
-RULE 4 — RTC WAKEUP CONFIGURED:
+RULE 4 - RTC WAKEUP CONFIGURED:
   Verify that HAL_RTCEx_SetWakeUpTimer_IT() is called during initialization.
   If not found, flag as missing.
 
-Output format — JSON:
+Output format - JSON:
 {
   "summary": {
     "hal_delay_violations": <count>,

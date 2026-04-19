@@ -18,7 +18,7 @@ Translate the following natural language engineering intent into a well-structur
 
 **Engineering intent (informal):**
 
-> "Our SPI driver is a mess — it's all in one 800-line file, everything is blocking, and we're having reliability issues with the CS pin timing. I want it split up properly so the HAL layer doesn't know anything about the business logic."
+> "Our SPI driver is a mess - it's all in one 800-line file, everything is blocking, and we're having reliability issues with the CS pin timing. I want it split up properly so the HAL layer doesn't know anything about the business logic."
 
 Your prompt must:
 
@@ -41,7 +41,7 @@ Your prompt must:
 Goal:
 Refactor the monolithic SPI driver (spi_driver.c, 800 lines) into a layered
 architecture: HAL abstraction layer, protocol driver layer, and application
-adapter — with zero blocking calls in the HAL layer.
+adapter - with zero blocking calls in the HAL layer.
 
 Architectural Constraints:
 - The HAL layer (spi_hal.c / spi_hal.h) must contain ONLY register-level operations:
@@ -51,7 +51,7 @@ Architectural Constraints:
 - The application adapter (sensor_spi.c / sensor_spi.h) may reference application
   objects and calls only the protocol layer API.
 - CS pin timing must use a hardware timer delay, not HAL_Delay().
-- No global variables — all state passed through handle structs.
+- No global variables - all state passed through handle structs.
 - All existing test cases in test_spi.c must pass unchanged.
 
 Expected output files:
@@ -190,7 +190,7 @@ for filepath in sorted(SRC_ROOT.rglob("*.c")) + sorted(SRC_ROOT.rglob("*.h")):
 
 print(f"\nSummary: {total_before} occurrences replaced across {len(changed_files)} files.")
 if total_after > 0:
-    print(f"WARNING: {total_after} occurrences remain — check for macro expansions.")
+    print(f"WARNING: {total_after} occurrences remain - check for macro expansions.")
 else:
     print("All occurrences replaced successfully.")
 ```
@@ -212,7 +212,7 @@ grep -rn "SPI_Transfer(" src/ --include="*.c" --include="*.h" | \
 
 #### 04. Intent-to-Build Validation Loop
 
-Combine the workflows from Tasks 01–03 into a complete **intent-to-build pipeline** that:
+Combine the workflows from Tasks 01-03 into a complete **intent-to-build pipeline** that:
 
 1. Accepts an informal engineering intent (plain English)
 2. Generates a structured vibe coding prompt (Task 01 style)
@@ -226,7 +226,7 @@ Combine the workflows from Tasks 01–03 into a complete **intent-to-build pipel
 ◦ The full vibe coding pipeline is: Intent → Plan → Human Review → Code → Verify → Deploy.
 ◦ Without the verification step, "vibe coded" firmware ships with compile errors.
 
-**Hint:** Reuse `self_healing_compile()` from Lab 007. Wrap stage 1–3 in a LangGraph plan node. Gate on a `human_approve()` checkpoint (Lab 006 pattern).
+**Hint:** Reuse `self_healing_compile()` from Lab 007. Wrap stage 1-3 in a LangGraph plan node. Gate on a `human_approve()` checkpoint (Lab 006 pattern).
 
 <details markdown>
 <summary>Solution</summary>
@@ -309,7 +309,7 @@ def intent_to_build_pipeline(informal_intent: str) -> dict:
 
 if __name__ == "__main__":
     intent_to_build_pipeline(
-        "Our SPI driver is a mess — it's all in one 800-line file, "
+        "Our SPI driver is a mess - it's all in one 800-line file, "
         "everything is blocking, and the CS pin timing is unreliable."
     )
 ```

@@ -132,7 +132,7 @@ you intend to write to each. Do not write code yet.
 | Score | Criteria                                                                                                                           |
 | ----- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | 5     | Lists all required registers: RCC_APB1ENR, GPIOA_MODER, GPIOA_AFRL, TIM2_PSC, TIM2_ARR, TIM2_CCR1, TIM2_CCMR1, TIM2_CCER, TIM2_CR1 |
-| 4     | Misses 1–2 registers but includes PSC/ARR math                                                                                     |
+| 4     | Misses 1-2 registers but includes PSC/ARR math                                                                                     |
 | 3     | Lists registers but omits GPIO alternate function or clock enable                                                                  |
 | 2     | Only lists TIM2 registers; no GPIO or RCC                                                                                          |
 | 1     | Skips the planning step and writes code immediately                                                                                |

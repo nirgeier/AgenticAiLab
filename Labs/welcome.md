@@ -25,19 +25,19 @@ hide:
 - Basic knowledge of C/C++ firmware development
 - Familiarity with memory-mapped I/O and microcontroller peripherals
 - VS Code (latest) with GitHub Copilot, or access to Claude Code
-- Python 3.10+ for LangGraph exercises (Labs 006–007)
+- Python 3.10+ for LangGraph exercises (Labs 006-007)
 
 ---
 
 ## Quick Links
 
-| Resource           | Link                                                                                       |
-| :----------------- | :----------------------------------------------------------------------------------------- |
-| Documentation      | [nirgeier.github.io/AgenticAI-FW-Course](https://nirgeier.github.io/AgenticAI-FW-Course/)  |
-| GitHub Repository  | [github.com/nirgeier/AgenticAI-FW-Course](https://github.com/nirgeier/AgenticAI-FW-Course) |
-| LangGraph Docs     | [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/)              |
-| QEMU Documentation | [www.qemu.org/docs](https://www.qemu.org/docs/master/)                                     |
-| Discord Community  | [discord.gg/U6xW23Ss](https://discord.gg/U6xW23Ss)                                         |
+| Resource           | Link                                                                          |
+| :----------------- | :---------------------------------------------------------------------------- |
+| Documentation      | [nirgeier.github.io/AgenticAiLab](https://nirgeier.github.io/AgenticAiLab/)   |
+| GitHub Repository  | [github.com/nirgeier/AgenticAiLab](https://github.com/nirgeier/AgenticAiLab)  |
+| LangGraph Docs     | [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/) |
+| QEMU Documentation | [www.qemu.org/docs](https://www.qemu.org/docs/master/)                        |
+| Discord Community  | [discord.gg/U6xW23Ss](https://discord.gg/U6xW23Ss)                            |
 
 ---
 

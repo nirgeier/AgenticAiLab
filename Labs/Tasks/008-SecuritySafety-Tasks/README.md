@@ -149,7 +149,7 @@ if __name__ == "__main__":
 Analyze the following BLE peripheral firmware and identify every power-wasting anti-pattern. For each, state: the pattern name, the impact in milliwatts or milliamp-hours, and the recommended fix.
 
 ```c
-// Main loop — BLE peripheral running on CR2032 battery
+// Main loop - BLE peripheral running on CR2032 battery
 while (1) {
     // 1. Poll BLE event register every 1ms
     if (BLE_Read_Events() != 0) {
@@ -184,10 +184,10 @@ while (1) {
 
 | #   | Anti-Pattern                         | Power Impact                                                                                                                      | Fix                                                                                                                                                    |
 | --- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1   | **BLE event polling + HAL_Delay(1)** | CPU active 100% of the time (16–25 mA typical on Cortex-M0+). CR2032 drains in < 10 hours.                                        | Use BLE connection events: enter `WFE/WFI` or `__WFI()` between events. CPU active only during BLE connection interval (e.g., 100 ms → 1% duty cycle). |
-| 2   | **Continuous ADC polling**           | ADC in continuous mode: ~0.3–1 mA. For slow-changing sensors, ADC should sample at 1 Hz or use a comparator to wake on threshold. | Configure ADC window watchdog: wake only when signal crosses a threshold. Average ADC current drops from 1 mA to ~10 µA.                               |
+| 1   | **BLE event polling + HAL_Delay(1)** | CPU active 100% of the time (16-25 mA typical on Cortex-M0+). CR2032 drains in < 10 hours.                                        | Use BLE connection events: enter `WFE/WFI` or `__WFI()` between events. CPU active only during BLE connection interval (e.g., 100 ms → 1% duty cycle). |
+| 2   | **Continuous ADC polling**           | ADC in continuous mode: ~0.3-1 mA. For slow-changing sensors, ADC should sample at 1 Hz or use a comparator to wake on threshold. | Configure ADC window watchdog: wake only when signal crosses a threshold. Average ADC current drops from 1 mA to ~10 µA.                               |
 | 3   | **TX power = +8 dBm always**         | Every 3 dBm reduction halves transmit current. +8 dBm → ~18 mA active TX; -4 dBm → ~4.5 mA (75% reduction).                       | Use the minimum TX power that achieves the required RSSI margin. Start at 0 dBm and reduce until margin < 10 dB is violated.                           |
-| 4   | **CPU at 64 MHz continuously**       | At 64 MHz: ~10–15 mA. At 4 MHz (necessary during BLE events only): ~1–2 mA.                                                       | Use dynamic frequency scaling: run at 4 MHz in sleep mode, boost to 64 MHz only during BLE event processing window (~1 ms).                            |
+| 4   | **CPU at 64 MHz continuously**       | At 64 MHz: ~10-15 mA. At 4 MHz (necessary during BLE events only): ~1-2 mA.                                                       | Use dynamic frequency scaling: run at 4 MHz in sleep mode, boost to 64 MHz only during BLE event processing window (~1 ms).                            |
 
 **Combined fix savings:** Estimated current drops from ~50 mA average to ~0.05 mA → CR2032 lifetime increases from 5 hours to ~200 days.
 

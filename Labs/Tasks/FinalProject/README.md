@@ -1,13 +1,13 @@
-# Final Project — Firmware Intelligence Pipeline
+# Final Project - Firmware Intelligence Pipeline
 
-> **Estimated effort:** 6–10 hours
+> **Estimated effort:** 6-10 hours
 > **Prerequisites:** All 14 labs completed
 
 ---
 
 ## Overview
 
-Build an end-to-end **Firmware Intelligence Pipeline** that autonomously takes a high-level firmware specification and produces verified, documented, production-ready C code — validated against hardware constraints, security rules, power budgets, and ROM budgets — with a final Markdown delivery report.
+Build an end-to-end **Firmware Intelligence Pipeline** that autonomously takes a high-level firmware specification and produces verified, documented, production-ready C code - validated against hardware constraints, security rules, power budgets, and ROM budgets - with a final Markdown delivery report.
 
 This project integrates every major skill from the course: hardware-aware context, automated register mapping, latency optimization, self-healing builds, security scanning, power analysis, ReAct reasoning, agentic documentation, and constraint-based generation.
 
@@ -28,9 +28,9 @@ Power supply: CR2032 battery (240 mAh @ 3.0V)
 Target battery life: 12 months minimum
 
 Peripherals to initialize:
-  1. I2C1 @ 400 kHz (Fast Mode) — connected to HDC2080 sensor at address 0x40
-  2. USART2 @ 9600 baud, 8N1 — debug console (DISABLE in production builds)
-  3. BLE (via SPI2 to external nRF52 module at 2 MHz) — send sensor data every 60 seconds
+  1. I2C1 @ 400 kHz (Fast Mode) - connected to HDC2080 sensor at address 0x40
+  2. USART2 @ 9600 baud, 8N1 - debug console (DISABLE in production builds)
+  3. BLE (via SPI2 to external nRF52 module at 2 MHz) - send sensor data every 60 seconds
 
 Operating mode:
   - Wake every 60 seconds (RTC wakeup from Stop2 mode)
@@ -58,22 +58,22 @@ Your pipeline must produce all of the following:
 
 Generated C headers for all required peripheral registers:
 
-- `i2c1_regs.h` — I2C1 control/status/data registers with bitfield structs
-- `spi2_regs.h` — SPI2 control registers
-- `usart2_regs.h` — USART2 control and baud rate registers
-- `rtc_regs.h` — RTC wakeup timer registers
+- `i2c1_regs.h` - I2C1 control/status/data registers with bitfield structs
+- `spi2_regs.h` - SPI2 control registers
+- `usart2_regs.h` - USART2 control and baud rate registers
+- `rtc_regs.h` - RTC wakeup timer registers
 
 ### 2. Driver Source Files
 
 Constraint-compliant C drivers:
 
-- `i2c1_driver.c / .h` — I2C Fast Mode, interrupt-driven, ≤ 1.5 KB ROM
-- `spi2_driver.c / .h` — SPI master, DMA RX, ≤ 1 KB ROM
-- `usart2_driver.c / .h` — Debug UART, `#if !PRODUCTION_BUILD` guarded, ≤ 512 bytes ROM
-- `rtc_wakeup.c / .h` — Stop2 + RTC wakeup configuration, ≤ 512 bytes ROM
-- `hdc2080.c / .h` — Sensor abstraction layer, ≤ 1 KB ROM
-- `ble_nrf52.c / .h` — BLE adapter calling spi2_driver, ≤ 1 KB ROM
-- `main.c` — Application main loop (wake → read → transmit → sleep)
+- `i2c1_driver.c / .h` - I2C Fast Mode, interrupt-driven, ≤ 1.5 KB ROM
+- `spi2_driver.c / .h` - SPI master, DMA RX, ≤ 1 KB ROM
+- `usart2_driver.c / .h` - Debug UART, `#if !PRODUCTION_BUILD` guarded, ≤ 512 bytes ROM
+- `rtc_wakeup.c / .h` - Stop2 + RTC wakeup configuration, ≤ 512 bytes ROM
+- `hdc2080.c / .h` - Sensor abstraction layer, ≤ 1 KB ROM
+- `ble_nrf52.c / .h` - BLE adapter calling spi2_driver, ≤ 1 KB ROM
+- `main.c` - Application main loop (wake → read → transmit → sleep)
 
 ### 3. Linker Script
 
@@ -87,14 +87,14 @@ Constraint-compliant C drivers:
 
 All generated automatically by the pipeline:
 
-- `reports/security_scan.md` — buffer overflow + unsafe function scan results
-- `reports/power_analysis.md` — active current budget vs. requirements
-- `reports/size_report.md` — per-module ROM usage vs. budgets
-- `reports/doxygen_coverage.md` — list of public functions without `@brief` comments
+- `reports/security_scan.md` - buffer overflow + unsafe function scan results
+- `reports/power_analysis.md` - active current budget vs. requirements
+- `reports/size_report.md` - per-module ROM usage vs. budgets
+- `reports/doxygen_coverage.md` - list of public functions without `@brief` comments
 
 ### 5. Pipeline Delivery Report
 
-`DELIVERY_REPORT.md` — structured Markdown report with sections:
+`DELIVERY_REPORT.md` - structured Markdown report with sections:
 
 - Executive Summary
 - Requirements Compliance Matrix
@@ -153,14 +153,14 @@ flowchart TD
 
 ## Getting Started
 
-### Step 1 — Set up the project structure
+### Step 1 - Set up the project structure
 
 ```bash
 mkdir -p firmware-intelligence-pipeline/{src,include,linker,reports}
 cd firmware-intelligence-pipeline
 ```
 
-### Step 2 — Create the pipeline entry point
+### Step 2 - Create the pipeline entry point
 
 ```python
 # pipeline.py
@@ -185,7 +185,7 @@ class PipelineState(TypedDict):
     iteration_count:     int
 ```
 
-### Step 3 — Implement each node
+### Step 3 - Implement each node
 
 Refer to the relevant labs for implementation patterns:
 
@@ -203,13 +203,13 @@ Refer to the relevant labs for implementation patterns:
 | `human_review_checkpoint`   | Lab 006 (LangGraph human-in-the-loop)               |
 | `generate_delivery_report`  | Lab 005 (debugging reports as template)             |
 
-### Step 4 — Run the pipeline
+### Step 4 - Run the pipeline
 
 ```bash
 python pipeline.py --requirements requirements.txt --output-dir output/
 ```
 
-### Step 5 — Verify deliverables
+### Step 5 - Verify deliverables
 
 ```bash
 # Build check

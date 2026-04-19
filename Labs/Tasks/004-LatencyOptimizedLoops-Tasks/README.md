@@ -59,10 +59,10 @@ Audit the following code snippet and list every blocking pattern with: the patte
 | 1   | **UART TX busy-wait**          | 3       | Time for TX shift register to empty: up to `1/baud × 10 bits` per character. At 9600 baud ≈ 1.04 ms/char. For long strings, sum of all characters. |
 | 2   | **SPI RX busy-wait**           | 10      | Full SPI frame transfer: `8 / f_SCK`. At 1 MHz SCK → 8 µs; at 100 kHz → 80 µs.                                                                     |
 | 3   | **ADC software-start polling** | 16      | ADC conversion time = `(sampling time + 12) × T_ADC_CLK`. Typical STM32F4 at 84 MHz APB2 → up to 15.5 µs.                                          |
-| 4   | **Busy-wait delay**            | 22      | Exact `ms` milliseconds — deterministic in value but blocks all other processing.                                                                  |
+| 4   | **Busy-wait delay**            | 22      | Exact `ms` milliseconds - deterministic in value but blocks all other processing.                                                                  |
 
 **Total worst-case blockage per single `UART_SendString(32 chars)` + `SPI_Transfer` + `ADC_Read` + `Delay_ms(1)` call:**
-≈ 33.3 ms + 8 µs + 15.5 µs + 1 ms ≈ **34.3 ms** — exceeds a 1 ms control loop deadline.
+≈ 33.3 ms + 8 µs + 15.5 µs + 1 ms ≈ **34.3 ms** - exceeds a 1 ms control loop deadline.
 
 </details>
 
@@ -178,7 +178,7 @@ void USART2_IRQHandler(void)
             USART2->DR = tx_buf[tx_tail];
             tx_tail = (tx_tail + 1U) % TX_BUF_SIZE;
         } else {
-            /* Buffer empty — disable TXE interrupt */
+            /* Buffer empty - disable TXE interrupt */
             USART2->CR1 &= ~USART_CR1_TXEIE;
         }
     }

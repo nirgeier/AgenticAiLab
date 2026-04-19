@@ -171,7 +171,7 @@ After running the agent on a real or simulated log, ask it to produce a debuggin
 
 ```
 Based on the fault analysis sessions above, generate a structured debugging report with:
-1. Executive Summary (2–3 sentences)
+1. Executive Summary (2-3 sentences)
 2. Root Cause Table (fault type, affected module, contributing factor)
 3. Recommended Code Changes (with before/after snippets)
 4. Preventive Measures (static analysis rules, RTOS configuration changes)

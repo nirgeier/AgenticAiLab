@@ -116,7 +116,7 @@ Missing hardware constraints:
 
 **Answers:**
 
-1. A well-behaved agent should identify **6–10** missing constraints.
+1. A well-behaved agent should identify **6-10** missing constraints.
 2. The most critical is the **APB2 clock frequency** - without it, the agent cannot compute the prescaler needed to achieve exactly 1 kHz.
 3. An agent that lists missing constraints before generating code has a **planning/reasoning loop** (not a pure token predictor), which is a hallmark of a well-structured agent.
 

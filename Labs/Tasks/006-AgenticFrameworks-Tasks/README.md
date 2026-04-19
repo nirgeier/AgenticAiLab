@@ -19,7 +19,7 @@ Define a LangGraph `TypedDict` state for a firmware code generation agent that:
 
 1. Tracks the original `task` description (string)
 2. Stores the `hardware_context` retrieved from RAG (string)
-3. Holds the current `generated_code` (string, optional — may not exist yet)
+3. Holds the current `generated_code` (string, optional - may not exist yet)
 4. Keeps a `build_result` dict with keys `success` (bool), `errors` (list of strings), `warnings` (list of strings)
 5. Stores a `review_status` from the human: `"pending"`, `"approved"`, or `"rejected"`
 6. Keeps `iteration_count` (int) to guard against infinite loops
@@ -27,7 +27,7 @@ Define a LangGraph `TypedDict` state for a firmware code generation agent that:
 #### Scenario:
 
 ◦ Before implementing any LangGraph node, the team agrees on a shared state schema.
-◦ All nodes read from and write to this state — it is the single source of truth.
+◦ All nodes read from and write to this state - it is the single source of truth.
 
 **Hint:** Use `Optional[str]` for fields that may not exist at graph start. Import from `typing` and `typing_extensions`.
 
@@ -158,7 +158,7 @@ def review_router(
 
 #### 04. Wire the Full Graph
 
-Using the state and nodes from Tasks 01–03, wire a complete LangGraph `StateGraph` with:
+Using the state and nodes from Tasks 01-03, wire a complete LangGraph `StateGraph` with:
 
 - **Nodes**: `plan`, `generate_code`, `build`, `human_review`, `finalize`, `fail`
 - **Edges**:

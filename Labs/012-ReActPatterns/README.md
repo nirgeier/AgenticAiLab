@@ -44,7 +44,7 @@ Observation: uart.c:142, inside UART_SendBuffer
 
 Thought: UART_SendBuffer at line 142 - let me check if there's a buffer overflow there.
 Action:  read_source(uart.c, 135, 150)
-Observation: [source code lines 135–150]
+Observation: [source code lines 135-150]
 
 Thought: I can see strcpy without bounds check on line 141. This is the root cause.
 Final Answer: Buffer overflow in UART_SendBuffer() at uart.c:141 due to unbounded strcpy.

@@ -220,7 +220,7 @@ agent_with_checkpoint = graph.compile(
 | Skill                 | What You Practiced                                           |
 | --------------------- | ------------------------------------------------------------ |
 | LangGraph state model | Defining TypedDict state and wiring nodes/edges              |
-| Plan–Generate–Review  | Multi-step reasoning loop for firmware tasks                 |
+| Plan-Generate-Review  | Multi-step reasoning loop for firmware tasks                 |
 | Conditional routing   | APPROVED vs. retry logic in edge conditions                  |
 | Human-in-the-loop     | Interrupt-before checkpoints for critical firmware decisions |
 

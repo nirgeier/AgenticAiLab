@@ -184,8 +184,8 @@ Implement the core `self_healing_compile()` loop that:
 
 #### Scenario:
 
-◦ The self-healing loop is the core value of Lab 007 — code that fixes itself.
-◦ On average, firmware agents need 1–3 iterations to produce clean compilation.
+◦ The self-healing loop is the core value of Lab 007 - code that fixes itself.
+◦ On average, firmware agents need 1-3 iterations to produce clean compilation.
 
 **Hint:** Send the original task + current source code + error list to the LLM in each iteration. Ask it to return ONLY the fixed C code.
 
@@ -254,7 +254,7 @@ Extend `self_healing_compile()` from Task 03 with a max-retry guard that:
 3. Raises a `HealingExhaustedError` exception
 4. The `notify_human` function should print a structured summary to stdout (or post to a webhook)
 
-Also: add a `convergence_check` — if the same error appears 3 times in a row (detected by comparing consecutive error lists), give up immediately.
+Also: add a `convergence_check` - if the same error appears 3 times in a row (detected by comparing consecutive error lists), give up immediately.
 
 #### Scenario:
 
@@ -272,7 +272,7 @@ class HealingExhaustedError(Exception):
 
 def notify_human(task: str, final_code: str, error_history: list) -> None:
     print("=" * 60)
-    print("SELF-HEALING EXHAUSTED — Human intervention required")
+    print("SELF-HEALING EXHAUSTED - Human intervention required")
     print(f"Task: {task}")
     print(f"Iterations attempted: {len(error_history)}")
     print(f"Last errors:\n{chr(10).join(error_history[-1])}")
@@ -308,7 +308,7 @@ def self_healing_compile(
         ):
             notify_human(task_description, current_code, error_history)
             raise HealingExhaustedError(
-                f"Errors unchanged for 3 consecutive iterations — aborting."
+                f"Errors unchanged for 3 consecutive iterations - aborting."
             )
 
         # Ask LLM to fix

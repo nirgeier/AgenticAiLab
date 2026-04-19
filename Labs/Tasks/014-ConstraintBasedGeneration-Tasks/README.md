@@ -229,7 +229,7 @@ void TIM2_IRQHandler(void)
 __attribute__((section(".dtcm_data")))
 const uint16_t sin_table[256] = { /* 256 entries */ };
 
-/* Calibrated spin delay — no optimization, no inlining */
+/* Calibrated spin delay - no optimization, no inlining */
 __attribute__((noinline, optimize("O0"), section(".text")))
 void SpinDelay_Cycles(uint32_t n)
 {
@@ -399,12 +399,12 @@ if __name__ == "__main__":
 
 #### 05. Assemble the Full Constraint Pipeline
 
-Combine all elements from Tasks 01–04 into a complete **constraint-based generation pipeline** that:
+Combine all elements from Tasks 01-04 into a complete **constraint-based generation pipeline** that:
 
 1. Accepts a hardware requirement description (plain text)
 2. Generates a structured constraint prompt block (Task 01 pattern)
 3. Generates the firmware code satisfying the constraints (Task 02 pattern)
-4. Checks linker section attributes are correct (Task 03 pattern — verify `__attribute__((section` is present)
+4. Checks linker section attributes are correct (Task 03 pattern - verify `__attribute__((section` is present)
 5. Compiles and measures code size (Task 04 pattern)
 6. Reports: constraint violations, code size vs. budget, overall PASS/FAIL
 

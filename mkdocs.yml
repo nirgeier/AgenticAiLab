@@ -3,13 +3,13 @@
 ###
 docs_dir: Labs
 edit_uri:
-repo_name: nirgeier/AgenticAI-FW-Course
-repo_url: https://github.com/nirgeier/AgenticAI-FW-Course
+repo_name: nirgeier/AgenticAiLab
+repo_url: https://github.com/nirgeier/AgenticAiLab
 site_author: Nir Geier - nirgeier@gmail.com
-site_description: A collection of AgenticAI-FW-Course Labs
+site_description: A collection of AgenticAiLab Labs
 site_dir: ./mkdocs-site
-site_name: AgenticAI-FW-Course
-site_url: https://nirgeier.github.io/AgenticAI-FW-Course/
+site_name: AgenticAiLab
+site_url: https://nirgeier.github.io/AgenticAiLab/
 ###
 ### mkdocs-theme.yml
 ###
@@ -77,17 +77,17 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/nirgeier/AgenticAI-FW-Course
+      link: https://github.com/nirgeier/AgenticAiLab
       name: View on GitHub
       class: social-class__github
 
     - icon: octicons/repo-forked-16
-      link: https://github.com/nirgeier/AgenticAI-FW-Course/network/members
+      link: https://github.com/nirgeier/AgenticAiLab/network/members
       name: Fork this repo
       class: social-class__fork
 
     - icon: octicons/star-16
-      link: https://github.com/nirgeier/AgenticAI-FW-Course/stargazers
+      link: https://github.com/nirgeier/AgenticAiLab/stargazers
       name: Star this repo
       class: social-class__star
 
@@ -117,81 +117,82 @@ extra:
       class: social-class__email
 
 extra_css:
-  - ./assets/stylesheets/codewizard.css?v=1776228921
+  - ./assets/stylesheets/codewizard.css?v=1776569237
 extra_javascript:
-  - https://buttons.github.io/buttons.js?v=1776228921
+  - https://buttons.github.io/buttons.js?v=1776569237
 ###
 ### mkdocs-plugins.yml
 ###
 
 plugins:
-  - awesome-pages
-  - meta
-  # Git
-  #- git-authors
-  - git-committers:
-      branch: main
-      docs_path: Labs # set if your docs folder is not root
-      enabled: true
-      repository: nirgeier/AgenticAI-FW-Course
-  - git-revision-date-localized:
-      enable_creation_date: true
-      enable_git_follow: false
-      fallback_to_build_date: true
-      locale: en
-      timezone: UTC
-      type: date
-  - search:
-      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-  - minify:
-      minify_html: true
+    - awesome-pages
+    - meta
+    # Git
+    #- git-authors
+    - git-committers:
+          branch: main
+          docs_path: Labs # set if your docs folder is not root
+          enabled: true
+          repository: nirgeier/AgenticAiLab
+    - git-revision-date-localized:
+          enable_creation_date: true
+          enable_git_follow: false
+          fallback_to_build_date: true
+          locale: en
+          timezone: UTC
+          type: date
+    - search:
+          separator: "[\\s\\u200b\\-_,:!=\\[\\]()\"`/]+|\\.(?!\\d)|&[lg]t;|(?!\\b)(?=[A-Z\
+              ][a-z])"
+    - minify:
+          minify_html: true
 
-  # Leave this one as the last one in the list
-  - print-site
-  - include-markdown
+    # Leave this one as the last one in the list
+    - print-site
+    - include-markdown
 ###
 ### mkdocs-extensions.yml
 ###
 
 markdown_extensions:
-      - toc:
-              permalink: false
-              baselevel: 3
-              toc_depth: 3
-      - abbr
-      - tables
-      - admonition # For callouts/notes
-      - footnotes # Footnotes support
-      - attr_list # Attribute lists for elements
-      - def_list # Definition lists
-      - md_in_html # Markdown inside HTML blocks
-      - smarty # Smart punctuation
-      - meta
-      - codehilite:
-              guess_lang: true # Fallback code highlighting
-      - pymdownx.tabbed:
-              alternate_style: true
-      - pymdownx.details # Collapsible details
-      - pymdownx.inlinehilite # Inline code highlighting
-      - pymdownx.keys # Keyboard key formatting
-      - pymdownx.tasklist:
-              custom_checkbox: true
-      - pymdownx.betterem:
-              smart_enable: all
-      - pymdownx.tilde # Subscript/superscript
-      - pymdownx.snippets # Snippet includes
-      - pymdownx.highlight:
-              anchor_linenums: true
-              line_spans: __span
-              pygments_lang_class: true
-      - pymdownx.superfences:
-              custom_fences:
-                    - name: mermaid
-                      class: mermaid
-                      format: "!!python/name:pymdownx.superfences.fence_code_format"
-      - pymdownx.emoji:
-              emoji_index: !!python/name:material.extensions.emoji.twemoji
-              emoji_generator: !!python/name:material.extensions.emoji.to_svg
+        - toc:
+                  permalink: false
+                  baselevel: 3
+                  toc_depth: 3
+        - abbr
+        - tables
+        - admonition # For callouts/notes
+        - footnotes # Footnotes support
+        - attr_list # Attribute lists for elements
+        - def_list # Definition lists
+        - md_in_html # Markdown inside HTML blocks
+        - smarty # Smart punctuation
+        - meta
+        - codehilite:
+                  guess_lang: true # Fallback code highlighting
+        - pymdownx.tabbed:
+                  alternate_style: true
+        - pymdownx.details # Collapsible details
+        - pymdownx.inlinehilite # Inline code highlighting
+        - pymdownx.keys # Keyboard key formatting
+        - pymdownx.tasklist:
+                  custom_checkbox: true
+        - pymdownx.betterem:
+                  smart_enable: all
+        - pymdownx.tilde # Subscript/superscript
+        - pymdownx.snippets # Snippet includes
+        - pymdownx.highlight:
+                  anchor_linenums: true
+                  line_spans: __span
+                  pygments_lang_class: true
+        - pymdownx.superfences:
+                  custom_fences:
+                          - name: mermaid
+                            class: mermaid
+                            format: !!python/name:pymdownx.superfences.fence_code_format
+        - pymdownx.emoji:
+                  emoji_index: !!python/name:material.extensions.emoji.twemoji ""
+                  emoji_generator: !!python/name:material.extensions.emoji.to_svg ""
 ###
 ### mkdocs-nav.yml
 ###

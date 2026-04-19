@@ -135,7 +135,7 @@ def parse_react_action(line: str) -> Tuple[str, List[Any], Dict[str, Any]]:
 
     positional = []
     keyword    = {}
-    # ast.literal_eval loses keyword argument names — use a more robust parse
+    # ast.literal_eval loses keyword argument names - use a more robust parse
     # for keyword args, try a manual key=value split:
     for part in re.split(r',\s*(?=\w+=)', args_str):
         if '=' in part.split('(')[0]:  # keyword arg
@@ -202,9 +202,9 @@ Include the simulated tool responses and the full expected ReAct trace.
 ```
 You are a firmware hard fault debugging agent.
 You have the following tools available:
-  ReadRegister(peripheral, register) — reads a register value as hex
-  DisassembleAt(address) — returns the assembly instruction at a given address
-  LookupSymbol(address) — returns the C symbol name at or near an address
+  ReadRegister(peripheral, register) - reads a register value as hex
+  DisassembleAt(address) - returns the assembly instruction at a given address
+  LookupSymbol(address) - returns the C symbol name at or near an address
 
 Use Thought/Action/Observation steps to analyze the hard fault.
 On each Thought, reason about what the data means and what to check next.
@@ -216,9 +216,9 @@ When you have identified the root cause and a concrete fix, write "Final Answer:
 ```
 Task: Debug hard fault. PC=0x08004A22, CFSR=0x00020000 (PRECISERR), BFAR=0x40005400
 
-Thought: CFSR bit 17 (BFSR[1]) is PRECISERR — a precise bus fault. The faulting address
+Thought: CFSR bit 17 (BFSR[1]) is PRECISERR - a precise bus fault. The faulting address
          is in BFAR = 0x40005400. This is a valid, known address in BFAR.
-         0x40005400 is in the STM32F4 APB1 range (0x40000000–0x40007FFF).
+         0x40005400 is in the STM32F4 APB1 range (0x40000000-0x40007FFF).
          Let me look up what peripheral is at 0x40005400.
 
 Action: LookupSymbol(0x40005400)
@@ -241,7 +241,7 @@ Action: ReadRegister("RCC", "APB1ENR")
 
 Observation: 0x00000000
 
-Thought: RCC_APB1ENR = 0x00000000. Bit 21 (I2C1EN) is 0 — I2C1 clock is NOT enabled.
+Thought: RCC_APB1ENR = 0x00000000. Bit 21 (I2C1EN) is 0 - I2C1 clock is NOT enabled.
          Writing to a gated peripheral register causes a PRECISERR bus fault on STM32F4.
          The code at 0x08004A22 attempts to write to I2C1->CR1 before enabling the clock.
          Let me confirm the calling function.
@@ -264,7 +264,7 @@ Fix: Add RCC->APB1ENR |= (1U << 21) before the first I2C1 register access in I2C
 
 #### 04. Solve an RTOS Sync Bug with ReAct
 
-The following FreeRTOS scenario produces a deadlock. Write a ReAct trace (without running any tools — reason through the logic step by step) that identifies the deadlock, explains the exact sequence of events, and proposes a fix.
+The following FreeRTOS scenario produces a deadlock. Write a ReAct trace (without running any tools - reason through the logic step by step) that identifies the deadlock, explains the exact sequence of events, and proposes a fix.
 
 ```c
 SemaphoreHandle_t mutex_A, mutex_B;
@@ -296,7 +296,7 @@ void TaskLow(void *p)           // priority 2
 
 #### Scenario:
 
-◦ Classic mutex inversion / circular wait deadlock — one of the most common RTOS bugs.
+◦ Classic mutex inversion / circular wait deadlock - one of the most common RTOS bugs.
 ◦ The ReAct reasoning trace demonstrates how the agent walks through the interleaved execution steps to find the cycle.
 
 **Hint:** Number the lock acquisition steps and draw the resource allocation graph mentally. Look for a cycle.
@@ -310,7 +310,7 @@ Task: Identify the deadlock in the two-task mutex scenario.
 Thought: I need to trace the interleaved execution to find a circular wait.
          TaskHigh takes mutex_A first, then mutex_B.
          TaskLow takes mutex_B first, then mutex_A.
-         This is a classic "opposite lock order" pattern — high deadlock risk.
+         This is a classic "opposite lock order" pattern - high deadlock risk.
 
 Action: AnalyzeExecution(trace=[
   "TaskHigh starts: takes mutex_A (succeeds)",
@@ -320,7 +320,7 @@ Action: AnalyzeExecution(trace=[
   "TaskHigh resumes: tries mutex_B → BLOCKED (held by TaskLow)"
 ])
 
-Observation: (Reasoning step — no external tool needed)
+Observation: (Reasoning step - no external tool needed)
   After the sequence:
   1. TaskHigh holds mutex_A, waiting for mutex_B
   2. TaskLow holds mutex_B, waiting for mutex_A
@@ -337,7 +337,7 @@ Observation: TaskHigh has higher priority (3 > 2). FreeRTOS uses preemptive sche
 
 Thought: The root cause is lock-order inconsistency:
   TaskHigh acquires (A, B); TaskLow acquires (B, A).
-  The fix is to enforce a global lock ordering — both tasks must acquire mutexes
+  The fix is to enforce a global lock ordering - both tasks must acquire mutexes
   in the SAME order: always A before B.
 
 Final Answer:
@@ -368,8 +368,8 @@ Fix: Enforce a canonical lock order (always acquire mutex_A before mutex_B in AL
 
 Design a **multi-agent system** where two ReAct agents collaborate to solve a firmware task:
 
-- **Agent A (Hardware Inspector)**: Has tools `ReadRegister`, `DisassembleAt` — no code generation
-- **Agent B (Code Fixer)**: Has tools `compile_and_check`, `write_firmware_file` — no register access
+- **Agent A (Hardware Inspector)**: Has tools `ReadRegister`, `DisassembleAt` - no code generation
+- **Agent B (Code Fixer)**: Has tools `compile_and_check`, `write_firmware_file` - no register access
 
 Task: _"USART2 is configured but not transmitting. Find the misconfigured register and generate a corrected initialization function."_
 
@@ -396,7 +396,7 @@ Agent A produces a `FindingsReport` JSON at the end of its ReAct trace:
 ```json
 {
   "peripheral": "USART2",
-  "issue": "UE bit (bit 13) in CR1 is NOT set — USART is disabled",
+  "issue": "UE bit (bit 13) in CR1 is NOT set - USART is disabled",
   "current_register_values": {
     "CR1": "0x000C",
     "BRR": "0x016D"
@@ -428,7 +428,7 @@ Thought: BRR=0x016D → correct for 115200 baud at 42 MHz APB1.
 Final Answer (Findings Report):
 {
   "peripheral": "USART2",
-  "issue": "UE bit (bit 13) in CR1 is NOT set — USART is disabled",
+  "issue": "UE bit (bit 13) in CR1 is NOT set - USART is disabled",
   "current_register_values": {"CR1": "0x000C", "BRR": "0x016D"},
   "correct_cr1_value": "0x200C",
   "required_changes": ["Set USART2 CR1 bit 13 (UE = USART Enable)"]
@@ -463,7 +463,7 @@ Action: write_firmware_file("usart2_init.c", <corrected_content>)
 Observation: "File written: usart2_init.c"
 
 Final Answer: Generated corrected USART2_Init() with CR1=0x200C (UE+TE+RE).
-              Root cause was missing UE bit — USART was configured but not enabled.
+              Root cause was missing UE bit - USART was configured but not enabled.
 ```
 
 </details>

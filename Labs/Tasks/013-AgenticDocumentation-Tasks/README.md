@@ -78,16 +78,16 @@ Reset the SPI1 peripheral.
 
 | Category                                    | Issue                                                                                                              |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| **Missing from docs**                       | `SPI1_Init()` now takes a second parameter `mode` — docs show only one parameter.                                  |
-| **Missing from docs**                       | `SPI1_Init()` return value is `-1` on invalid baud rate — docs only mention `0 on success`.                        |
-| **Missing from docs**                       | `SPI1_Transfer()` is the current function name — docs have `SPI1_Write()` and `SPI1_Read()` as separate functions. |
-| **Missing from docs**                       | `SPI1_Transfer()` has a `cs_pin` parameter — no CS management exists in docs.                                      |
-| **Missing from docs**                       | `SPI1_DeInit()` is present in header — docs call it `SPI1_Reset()` (wrong name).                                   |
-| **Removed API (docs have, header doesn't)** | `SPI1_Write()` — replaced by `SPI1_Transfer()`.                                                                    |
-| **Removed API (docs have, header doesn't)** | `SPI1_Read()` — replaced by `SPI1_Transfer()`.                                                                     |
-| **Removed API (docs have, header doesn't)** | `SPI1_Reset()` — replaced by `SPI1_DeInit()`.                                                                      |
+| **Missing from docs**                       | `SPI1_Init()` now takes a second parameter `mode` - docs show only one parameter.                                  |
+| **Missing from docs**                       | `SPI1_Init()` return value is `-1` on invalid baud rate - docs only mention `0 on success`.                        |
+| **Missing from docs**                       | `SPI1_Transfer()` is the current function name - docs have `SPI1_Write()` and `SPI1_Read()` as separate functions. |
+| **Missing from docs**                       | `SPI1_Transfer()` has a `cs_pin` parameter - no CS management exists in docs.                                      |
+| **Missing from docs**                       | `SPI1_DeInit()` is present in header - docs call it `SPI1_Reset()` (wrong name).                                   |
+| **Removed API (docs have, header doesn't)** | `SPI1_Write()` - replaced by `SPI1_Transfer()`.                                                                    |
+| **Removed API (docs have, header doesn't)** | `SPI1_Read()` - replaced by `SPI1_Transfer()`.                                                                     |
+| **Removed API (docs have, header doesn't)** | `SPI1_Reset()` - replaced by `SPI1_DeInit()`.                                                                      |
 
-**Summary:** 3 functions were renamed/consolidated, 3 functions were deleted from the API, and 2 functions gained new parameters — none of these changes were reflected in `SPI_DRIVER.md`.
+**Summary:** 3 functions were renamed/consolidated, 3 functions were deleted from the API, and 2 functions gained new parameters - none of these changes were reflected in `SPI_DRIVER.md`.
 
 </details>
 
@@ -204,7 +204,7 @@ Write a Python function `scan_diff_for_doc_impact(diff_text: str) -> list[dict]`
 ◦ As a CI pipeline pre-commit hook, this scanner alerts the team when a header change needs documentation updates.
 ◦ It blocks the merge until `--no-doc-update` is explicitly acknowledged.
 
-**Hint:** Track removed signatures in one set and added signatures in another. Functions present in both are "modified" — reconstruct the pairing by function name.
+**Hint:** Track removed signatures in one set and added signatures in another. Functions present in both are "modified" - reconstruct the pairing by function name.
 
 <details markdown>
 <summary>Solution</summary>
@@ -304,7 +304,7 @@ Write a prompt for a documentation generation agent that:
 
 1. Accepts a C function implementation (without comments)
 2. Generates a complete Doxygen comment block: `@brief`, `@param` for each parameter, `@return`, and `@note` if there is a known hardware constraint
-3. Preserves the function signature exactly — no code changes, only the comment block
+3. Preserves the function signature exactly - no code changes, only the comment block
 
 Then run it against the following two functions and show the expected output:
 
@@ -357,7 +357,7 @@ Requirements:
 /**
  * @brief Write a single byte to a register on an I2C device.
  *
- * @param dev_addr  7-bit I2C device address (without the R/W bit), range 0x00–0x7F.
+ * @param dev_addr  7-bit I2C device address (without the R/W bit), range 0x00-0x7F.
  * @param reg_addr  Target register address within the device.
  * @param data      Byte value to write to the register.
  *
@@ -377,10 +377,10 @@ int8_t I2C_WriteByte(uint8_t dev_addr, uint8_t reg_addr, uint8_t data);
 /**
  * @brief Set the PWM duty cycle for a TIM3 output channel.
  *
- * @param channel     TIM3 output channel number, valid range 1–4.
+ * @param channel     TIM3 output channel number, valid range 1-4.
  *                    Values outside this range are silently ignored.
  * @param duty_ticks  Duty cycle in timer ticks. Should be in range [0, TIM3->ARR]
- *                    to produce a 0%–100% duty cycle. Values exceeding ARR result in 100% output.
+ *                    to produce a 0%-100% duty cycle. Values exceeding ARR result in 100% output.
  *
  * @note TIM3 must be initialized and running before calling this function.
  *       The maximum value for duty_ticks is the TIM3 auto-reload register (TIM3->ARR).

@@ -270,7 +270,7 @@ print(results)
 
 #### 04. Build the Agentic Loop
 
-Combine Tasks 01–03 into a complete **agentic tool-use loop** that:
+Combine Tasks 01-03 into a complete **agentic tool-use loop** that:
 
 1. Starts with a task: `"Configure USART2 for 115200 baud at 84 MHz APB1 and enable the peripheral"`
 2. Sends the task + tools array to the LLM
@@ -281,7 +281,7 @@ Combine Tasks 01–03 into a complete **agentic tool-use loop** that:
 
 #### Scenario:
 
-◦ The full agentic loop is the core of any tool-using agent. Without it, the LLM can only suggest code — with it, it can actually configure hardware.
+◦ The full agentic loop is the core of any tool-using agent. Without it, the LLM can only suggest code - with it, it can actually configure hardware.
 ◦ A well-implemented loop handles multi-turn tool call chains naturally.
 
 **Hint:** The loop condition is `finish_reason != "stop"`. Add a max-rounds guard to prevent runaway loops.
@@ -364,7 +364,7 @@ Also write a test that sends a bad tool call to the LLM loop and verifies the ag
 
 #### Scenario:
 
-◦ In production, tool handlers encounter unexpected inputs. Errors returned as JSON are handled gracefully by the LLM — it reads the error and retries with corrected parameters.
+◦ In production, tool handlers encounter unexpected inputs. Errors returned as JSON are handled gracefully by the LLM - it reads the error and retries with corrected parameters.
 ◦ Unhandled Python exceptions crash the loop entirely.
 
 **Hint:** Always return `json.dumps({"error": str(e)})` in except blocks, never re-raise in a tool handler.

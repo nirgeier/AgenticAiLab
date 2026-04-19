@@ -43,7 +43,7 @@ the faulting instruction, the root cause, and recommend a fix.
 ◦ A device in the field is crashing with a hard fault. The team has only the register dump from the serial console.
 ◦ The agent must determine fault type, explain the likely cause, and suggest a specific code fix.
 
-**Hint:** CFSR bit [9] in BFSR (bit 9 of CFSR) = `PRECISERR` — precise bus fault on data access.
+**Hint:** CFSR bit [9] in BFSR (bit 9 of CFSR) = `PRECISERR` - precise bus fault on data access.
 
 <details markdown>
 <summary>Solution</summary>
@@ -59,7 +59,7 @@ the faulting instruction, the root cause, and recommend a fix.
 **Root Cause:**
 The `STR r0, [r2]` instruction at `0x0800_14AC` attempts to write to `r2 = 0x2001_FA00`. On this particular STM32 configuration, `0x2001_FA00` is **below the bottom of the main stack** (PSP = same address, stack overflow). The processor raises a `PRECISERR` bus fault because the write address is in an unmapped or MPU-protected region.
 
-Note: `BFARVALID=0` means the `BFAR` value is a leftover from a previous fault — it should be ignored.
+Note: `BFARVALID=0` means the `BFAR` value is a leftover from a previous fault - it should be ignored.
 
 **Fix:**
 
@@ -117,7 +117,7 @@ void ProcessingTask(void *pvParam)
 
 #### Scenario:
 
-◦ The system is producing sporadic incorrect processing results — roughly 1 in 50 iterations.
+◦ The system is producing sporadic incorrect processing results - roughly 1 in 50 iterations.
 ◦ The agent must identify the exact race condition and recommend a fix.
 
 **Hint:** Consider what happens if FreeRTOS preempts `SensorTask` mid-array-fill and `ProcessingTask` runs immediately after.
@@ -128,12 +128,12 @@ void ProcessingTask(void *pvParam)
 **Race condition identified:**
 
 **Problem 1: Torn read/write on `g_SensorData`**
-`SensorTask` writes 8 elements over ~40 µs (8 × 5 µs). FreeRTOS (preemptive) can preempt it after any element. If `ProcessingTask` runs while `SensorTask` is halfway through the array, `ProcessingTask` reads a **partially updated buffer** — some old values, some new values.
+`SensorTask` writes 8 elements over ~40 µs (8 × 5 µs). FreeRTOS (preemptive) can preempt it after any element. If `ProcessingTask` runs while `SensorTask` is halfway through the array, `ProcessingTask` reads a **partially updated buffer** - some old values, some new values.
 
 **Problem 2: Non-atomic read-modify-write on `g_DataReady`**
 Reading `g_DataReady` and clearing it in `ProcessingTask` is not atomic. If both tasks race on this flag, the data could be processed twice or missed.
 
-**Fix — use a FreeRTOS mutex or task notification:**
+**Fix - use a FreeRTOS mutex or task notification:**
 
 ```c
 // Replace shared globals with a mutex-protected pattern
@@ -344,7 +344,7 @@ Data:
 **Expected report structure:**
 
 ```markdown
-# Firmware Debugging Report — [Date]
+# Firmware Debugging Report - [Date]
 
 ## Executive Summary
 
@@ -365,8 +365,8 @@ leading to unchecked stack growth and eventual execution of corrupted code.
 
 | Task     | State         | Stack Watermark | Severity                   |
 | -------- | ------------- | --------------- | -------------------------- |
-| CommTask | Blocked 800ms | N/A             | HIGH — probable deadlock   |
-| DataTask | Running       | 20 bytes        | HIGH — near stack overflow |
+| CommTask | Blocked 800ms | N/A             | HIGH - probable deadlock   |
+| DataTask | Running       | 20 bytes        | HIGH - near stack overflow |
 
 ## Peripheral Log Analysis
 

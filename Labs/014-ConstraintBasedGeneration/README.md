@@ -268,11 +268,11 @@ Congratulations - you have completed all 14 modules of **Agentic AI for Firmware
 
 | Modules | Skills Built                                         |
 | ------- | ---------------------------------------------------- |
-| 001–002 | Agent architecture, hardware context, tool concepts  |
-| 003–005 | Register mapping, latency, JTAG debugging            |
-| 006–008 | LangGraph, self-healing workflows, security scanning |
-| 009–011 | Vibe coding, power refactoring, QEMU tool-use        |
-| 012–014 | ReAct, living docs, constraint-based generation      |
+| 001-002 | Agent architecture, hardware context, tool concepts  |
+| 003-005 | Register mapping, latency, JTAG debugging            |
+| 006-008 | LangGraph, self-healing workflows, security scanning |
+| 009-011 | Vibe coding, power refactoring, QEMU tool-use        |
+| 012-014 | ReAct, living docs, constraint-based generation      |
 
 ---
 
