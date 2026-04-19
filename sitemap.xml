@@ -1,135 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/welcome/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/welcome/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/001-Introduction/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/001-Introduction/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/002-HardwareAwareAgents/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/002-HardwareAwareAgents/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/003-AutomatedRegisterMapping/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/003-AutomatedRegisterMapping/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/004-LatencyOptimizedLoops/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/004-LatencyOptimizedLoops/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/005-AgenticDebugging/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/005-AgenticDebugging/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/006-AgenticFrameworks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/006-AgenticFrameworks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/007-SelfHealingWorkflows/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/007-SelfHealingWorkflows/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/008-SecuritySafety/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/008-SecuritySafety/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/009-VibeCodingForHW/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/009-VibeCodingForHW/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/010-PowerSensitiveRefactoring/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/010-PowerSensitiveRefactoring/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/011-ToolUseFunctionCalling/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/011-ToolUseFunctionCalling/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/012-ReActPatterns/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/012-ReActPatterns/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/013-AgenticDocumentation/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/013-AgenticDocumentation/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/014-ConstraintBasedGeneration/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/014-ConstraintBasedGeneration/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/001-Introduction-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/001-Introduction-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/002-HardwareAwareAgents-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/002-HardwareAwareAgents-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/003-AutomatedRegisterMapping-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/003-AutomatedRegisterMapping-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/004-LatencyOptimizedLoops-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/004-LatencyOptimizedLoops-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/005-AgenticDebugging-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/005-AgenticDebugging-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/006-AgenticFrameworks-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/006-AgenticFrameworks-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/007-SelfHealingWorkflows-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/007-SelfHealingWorkflows-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/008-SecuritySafety-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/008-SecuritySafety-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/009-VibeCodingForHW-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/009-VibeCodingForHW-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/010-PowerSensitiveRefactoring-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/010-PowerSensitiveRefactoring-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/011-ToolUseFunctionCalling-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/011-ToolUseFunctionCalling-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/012-ReActPatterns-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/012-ReActPatterns-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/013-AgenticDocumentation-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/013-AgenticDocumentation-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/014-ConstraintBasedGeneration-Tasks/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/014-ConstraintBasedGeneration-Tasks/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
     <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/Tasks/FinalProject/</loc>
-         <lastmod>2026-04-15</lastmod>
-    </url>
-    <url>
-         <loc>https://nirgeier.github.io/AgenticAI-FW-Course/assets/partials/usage/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <loc>https://nirgeier.github.io/AgenticAiLab/Tasks/FinalProject/</loc>
+         <lastmod>2026-04-19</lastmod>
     </url>
 </urlset>
