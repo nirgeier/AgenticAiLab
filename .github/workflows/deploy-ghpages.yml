@@ -44,9 +44,9 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -f mkdocs/requirements.txt ]; then
-            uv pip install -r mkdocs/requirements.txt
+            uv pip install --system -r mkdocs/requirements.txt
           else
-            uv pip install mkdocs==1.5.3 mkdocs-material==9.4.14 mkdocs-awesome-pages-plugin==2.9.2 mkdocs-git-committers-plugin-2==0.3.6 mkdocs-git-revision-date-localized-plugin==1.12.5
+            uv pip install --system mkdocs==1.5.3 mkdocs-material==9.4.14 mkdocs-awesome-pages-plugin==2.9.2 mkdocs-git-committers-plugin-2==0.3.6 mkdocs-git-revision-date-localized-plugin==1.12.5
           fi
 
       - name: Build MkDocs
