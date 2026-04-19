@@ -67,17 +67,13 @@ jobs:
       - name: Prepare MkDocs build directory
         run: |
           # Create .mkdocs-build/ by merging shared base + project overrides
+          # (needed for custom_dir: .mkdocs-build/overrides in mkdocs.yml)
           if [ -d .mkdocs-shared/mkdocs ]; then
             rm -rf .mkdocs-build
             mkdir -p .mkdocs-build
             cp -r .mkdocs-shared/mkdocs/. .mkdocs-build/
             [ -d mkdocs ] && cp -rf mkdocs/. .mkdocs-build/
             echo "✅ Merged .mkdocs-shared/mkdocs + mkdocs/ → .mkdocs-build/"
-          fi
-          # Regenerate mkdocs.yml from config parts if available
-          if ls .mkdocs-build/*.yml 1>/dev/null 2>&1; then
-            cat .mkdocs-build/[0-9]*.yml > mkdocs.yml
-            echo "✅ Rebuilt mkdocs.yml from .mkdocs-build/ parts"
           fi
 
       - name: Build MkDocs
