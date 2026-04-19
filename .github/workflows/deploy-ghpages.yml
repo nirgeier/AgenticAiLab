@@ -54,15 +54,24 @@ jobs:
             uv pip install --system mkdocs==1.5.3 mkdocs-material==9.4.14 mkdocs-awesome-pages-plugin==2.9.2 mkdocs-git-committers-plugin-2==0.3.6 mkdocs-git-revision-date-localized-plugin==1.12.5
           fi
 
-      - name: Initialize MkDocs site
+      - name: Prepare MkDocs build directory
         run: |
-          if [ -f .mkdocs-shared/init_site.sh ]; then
-            bash .mkdocs-shared/init_site.sh --no-serve
-          elif [ -f mkdocs/scripts/init_site.sh ]; then
-            bash mkdocs/scripts/init_site.sh --no-serve
-          else
-            mkdocs build -f mkdocs.yml -d mkdocs-site
+          # Create .mkdocs-build/ by merging shared base + project overrides
+          if [ -d .mkdocs-shared/mkdocs ]; then
+            rm -rf .mkdocs-build
+            mkdir -p .mkdocs-build
+            cp -r .mkdocs-shared/mkdocs/. .mkdocs-build/
+            [ -d mkdocs ] && cp -rf mkdocs/. .mkdocs-build/
+            echo "✅ Merged .mkdocs-shared/mkdocs + mkdocs/ → .mkdocs-build/"
           fi
+          # Regenerate mkdocs.yml from config parts if available
+          if ls .mkdocs-build/*.yml 1>/dev/null 2>&1; then
+            cat .mkdocs-build/[0-9]*.yml > mkdocs.yml
+            echo "✅ Rebuilt mkdocs.yml from .mkdocs-build/ parts"
+          fi
+
+      - name: Build MkDocs
+        run: mkdocs build -f mkdocs.yml -d mkdocs-site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
